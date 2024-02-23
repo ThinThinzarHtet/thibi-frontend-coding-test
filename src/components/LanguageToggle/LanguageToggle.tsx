@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import layoutConfig from '@/config/layoutConfig';
 
-interface ILanguageToggle  {
+interface ILanguageToggle {
   textColor?: string;
 }
 
@@ -14,7 +14,7 @@ const LanguageToggle = ({ textColor = 'white' }: ILanguageToggle) => {
   const { t } = useTranslation('common');
 
   return (
-    <div className = {`text-${textColor}`}>
+    <div className={`text-${textColor} flex`}>
       {layoutConfig.locales.map((lng, index) => {
         return (
           <div key={index}>
@@ -25,7 +25,7 @@ const LanguageToggle = ({ textColor = 'white' }: ILanguageToggle) => {
               }`}
               onClick={() => setLanguage(lng)}
             >
-              {t(lng)}
+              {t(lng) === 'English' ? 'En' : t(lng)}
             </span>
             {index + 1 < layoutConfig.locales.length ? '|' : ''}
           </div>

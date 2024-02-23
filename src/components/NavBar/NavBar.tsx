@@ -27,25 +27,27 @@ const NavBar = ({ logo, menuItems, bgColor, textColor = 'white' }: INavBar) => {
     <Disclosure as="nav" className={`bg-${bgColor}`}>
       {({ open }) => (
         <>
-          <div className="container px-4 mx-auto sm:px-6 lg:px-8">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <img 
-                    className="block w-auto h-8 lg:hidden" 
-                    src={logo.mobile} 
-                    alt={logo.alt} 
-                    loading="lazy" />
-                  <img 
-                    className="hidden w-auto h-8 lg:block" 
-                    src={logo.desktop} 
-                    alt={logo.alt} 
-                    loading="lazy" />
+                  <img
+                    className="block w-auto h-8 lg:hidden"
+                    src={logo.mobile}
+                    alt={logo.alt}
+                    loading="lazy"
+                  />
+                  <img
+                    className="hidden w-auto h-8 lg:block"
+                    src={logo.desktop}
+                    alt={logo.alt}
+                    loading="lazy"
+                  />
                 </div>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                    {menuItems.map((item) => (
+                    {/* {menuItems.map((item) => (
                       <a
                         key={item.id}
                         href={item.link}
@@ -53,17 +55,17 @@ const NavBar = ({ logo, menuItems, bgColor, textColor = 'white' }: INavBar) => {
                       >
                         {item.displayName}
                       </a>
-                    ))}
+                    ))} */}
                   </div>
                 </div>
               </div>
-              <div className="hidden sm:ml-6 sm:block">
+              <div className="sm:ml-6 sm:block">
                 {/* Right Menuj */}
                 <LanguageToggle textColor={textColor} />
               </div>
-              <div className="flex -mr-2 sm:hidden">
-                {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              {/* <div className="flex -mr-2 sm:hidden"> */}
+              {/* Mobile menu button */}
+              {/* <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block w-6 h-6" aria-hidden="true" />
@@ -71,14 +73,14 @@ const NavBar = ({ logo, menuItems, bgColor, textColor = 'white' }: INavBar) => {
                     <MenuIcon className="block w-6 h-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
-              </div>
+              </div> */}
             </div>
           </div>
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-              {menuItems.map((item) => (
+              {/* {menuItems.map((item) => (
                 <a
                   key={item.id}
                   href={item.link}
@@ -86,7 +88,7 @@ const NavBar = ({ logo, menuItems, bgColor, textColor = 'white' }: INavBar) => {
                 >
                   {item.displayName}
                 </a>
-              ))}
+              ))} */}
             </div>
             <div className="p-4 border-t border-gray-700">
               {/* Right Menu */}
