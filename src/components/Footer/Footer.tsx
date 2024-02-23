@@ -35,7 +35,7 @@ const Footer = ({ logo }: IFooter) => {
             </a>
           </div>
         </div>
-        <div className="py-6 text-center text-white flex-end">
+        <div className=" text-center text-white flex-end">
           &copy;&nbsp;2023, All Right Reserved.
         </div>
       </div>

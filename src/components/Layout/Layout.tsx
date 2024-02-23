@@ -15,7 +15,7 @@ export default function DefaultLayout({ children }: { children: React.ReactNode 
         bgColor={layoutConfig.navBar.bgColor}
         menuItems={layoutConfig.navBar.menuItems}
       />
-      <div className="flex-1">{children}</div>
+      <div className="flex-1 bg-slate-200">{children}</div>
       <Footer logo={layoutConfig.logo} />
     </div>
   );
