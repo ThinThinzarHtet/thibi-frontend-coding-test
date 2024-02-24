@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GlossaryCard from './GlossaryCard';
-import { GlossaryData } from '@/pages';
+
+import { useRouter } from 'next/router';
+import { GlossaryData } from '@/shared/types';
 
 const letterArr: string[] = [
   'A',
@@ -32,21 +34,32 @@ const letterArr: string[] = [
 ];
 
 type GlossaryDataProps = {
-  glossaryData: GlossaryData[];
+  glossaryDataEng: GlossaryData[];
+  glossaryDataMM: GlossaryData[];
 };
 
+// filtering glossary data according to selected letter
 const filterFunc = (data: GlossaryData[], letter: string): GlossaryData[] => {
   return data?.filter((d: GlossaryData) => d.attributes.en_term.startsWith(letter));
 };
-const GlossaryData = ({ glossaryData }: GlossaryDataProps) => {
+
+const GlossaryData = ({ glossaryDataEng, glossaryDataMM }: GlossaryDataProps) => {
+  const { locale } = useRouter();
+
   const [selectedLetter, setSelectedLetter] = useState('A');
-  const [filteredData, setFilteredData] = useState(filterFunc(glossaryData, 'A'));
+  const [filteredData, setFilteredData] = useState(
+    filterFunc(locale === 'mm' ? glossaryDataMM : glossaryDataEng, 'A')
+  );
 
   const filterLetter = (letter: string): void => {
     setSelectedLetter(letter);
-    const filteredData = filterFunc(glossaryData, letter);
+    const filteredData = filterFunc(locale === 'mm' ? glossaryDataMM : glossaryDataEng, letter);
     setFilteredData(filteredData);
   };
+
+  useEffect(() => {
+    setFilteredData(filterFunc(locale === 'mm' ? glossaryDataMM : glossaryDataEng, selectedLetter));
+  }, [locale]);
 
   return (
     <div className="bg-slate-200  px-4 mx-auto py-5">
@@ -63,8 +76,8 @@ const GlossaryData = ({ glossaryData }: GlossaryDataProps) => {
           <span
             key={letter}
             onClick={() => filterLetter(letter)}
-            className={`cursor-pointer hover:text-blue-500 ${
-              selectedLetter === letter && 'text-blue-500 underline font-bold'
+            className={`cursor-pointer hover:text-primary ${
+              selectedLetter === letter && 'text-primary underline font-bold'
             }`}
           >
             {letter}
@@ -73,6 +86,7 @@ const GlossaryData = ({ glossaryData }: GlossaryDataProps) => {
       </div>
 
       <GlossaryCard selectedLetter={selectedLetter} glossaryData={filteredData} />
+      <p className="mt-5 text-sm text-center underline text-[#727272]">စာမျက်နှာအပေါ်သို့</p>
     </div>
   );
 };
