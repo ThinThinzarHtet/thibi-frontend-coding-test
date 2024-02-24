@@ -10,8 +10,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const resMM = await fetch('https://cms.businessintegritymyanmar.thibi.co/api/glossarymms');
   const glossaryDataMM: GlossaryData[] = await resMM.json();
+
   return {
-    props: { glossaryDataEng: glossaryDataEng.data, glossaryDataMM: glossaryDataMM.data },
+    props: { glossaryDataEng: glossaryDataEng, glossaryDataMM: glossaryDataMM },
   };
 };
 
@@ -23,7 +24,10 @@ export default function Home({
     <>
       <Layout>
         <div className="h-full ">
-          <GlossaryDataComp glossaryDataEng={glossaryDataEng} glossaryDataMM={glossaryDataMM} />
+          <GlossaryDataComp
+            glossaryDataEng={glossaryDataEng.data}
+            glossaryDataMM={glossaryDataMM.data}
+          />
         </div>
       </Layout>
     </>

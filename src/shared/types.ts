@@ -4,10 +4,10 @@ export type GlossaryData = {
     en_term: string;
     mm_term: string;
     description: string;
-    reference: string;
+    reference: string | null;
     createdAt: Date;
     updatedAt: Date;
     publishedAt: Date;
-    subterm: string;
+    subterm: string | null;
   };
 };

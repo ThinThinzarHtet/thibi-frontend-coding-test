@@ -11,7 +11,7 @@ const GlossaryItem = ({ glossaryData }: GlossaryItemProps) => {
   const { t } = useTranslation('common');
   return (
     <div className="py-10 min-h-[200px]">
-      {glossaryData.length === 0 ? (
+      {glossaryData?.length === 0 ? (
         <>
           <div className="flex justify-center px-8">
             <p>There is no data!</p>

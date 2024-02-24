@@ -1,5 +1,4 @@
 import { Disclosure } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
 //Internal Components
 import LanguageToggle from '@/components/LanguageToggle';
 
