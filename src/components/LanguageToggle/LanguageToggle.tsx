@@ -25,8 +25,9 @@ const LanguageToggle = ({ textColor = 'white' }: ILanguageToggle) => {
               }`}
               onClick={() => setLanguage(lng)}
             >
-              {t(lng) === 'English' ? 'En' : t(lng)}
+              {t(lng)}
             </span>
+
             {index + 1 < layoutConfig.locales.length ? '|' : ''}
           </div>
         );

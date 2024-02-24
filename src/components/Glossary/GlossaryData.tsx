@@ -36,7 +36,7 @@ type GlossaryDataProps = {
 };
 
 const filterFunc = (data: GlossaryData[], letter: string): GlossaryData[] => {
-  return data.filter((d: GlossaryData) => d.attributes.en_term.startsWith(letter));
+  return data?.filter((d: GlossaryData) => d.attributes.en_term.startsWith(letter));
 };
 const GlossaryData = ({ glossaryData }: GlossaryDataProps) => {
   const [selectedLetter, setSelectedLetter] = useState('A');
@@ -44,9 +44,6 @@ const GlossaryData = ({ glossaryData }: GlossaryDataProps) => {
 
   const filterLetter = (letter: string): void => {
     setSelectedLetter(letter);
-    // const filteredData = glossaryData.filter((data: GlossaryData) =>
-    //   data.attributes.en_term.startsWith(letter)
-    // );
     const filteredData = filterFunc(glossaryData, letter);
     setFilteredData(filteredData);
   };
@@ -62,7 +59,7 @@ const GlossaryData = ({ glossaryData }: GlossaryDataProps) => {
       </div>
       <div className="flex flex-wrap justify-center gap-3 mt-5">
         <span>&#35;</span>
-        {letterArr.map((letter) => (
+        {letterArr.map((letter: string) => (
           <span
             key={letter}
             onClick={() => filterLetter(letter)}
